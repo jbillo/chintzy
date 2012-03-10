@@ -4,13 +4,13 @@ TMPDIR=/tmp
 if [ ! `whoami` == "postgres" ]
 then
     echo "You must be the postgres user to execute this script."
-    exit
+    exit 1
 fi
 
 if [ ! $# == 3 ]
 then
     echo "Usage: $0 dbname dbuser dbpass"
-    exit
+    exit 1
 fi
 
 echo "postgres user detected, now beginning database creation"
@@ -26,3 +26,5 @@ sed -i "s/__DBUSER__/$2/g" $TMPDIR/create_db.pgsql
 sed -i "s/__DBPASS__/$3/g" $TMPDIR/create_db.pgsql 
 psql -f $TMPDIR/create_db.pgsql
 rm -rf $TMPDIR/create_db.pgsql
+
+exit 0

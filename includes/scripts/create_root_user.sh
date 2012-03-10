@@ -3,14 +3,14 @@
 if [ ! `whoami` == "postgres" ]
 then
     echo "You must be the postgres user to execute this script."
-    exit
+    exit 1
 fi
 
 if [ ! $# == 3 ]
 then
     echo "Usage: $0 dbname root_user_name root_password"
     echo "Default dbname is chintzydb"
-    exit
+    exit 1
 fi
 
 echo "postgres user detected. Now creating root user $2 in database $1"

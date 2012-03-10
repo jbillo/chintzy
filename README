@@ -10,3 +10,45 @@ This currently powers the EdgeLink Consulting (edgelinkconsulting.com) website
 as well as a few private installations. I'm still working on getting things
 ready for Github/public viewing, but figured it would be a good idea to
 have a central repo that won't change places when I nuke out a VM.
+
+
+== Installation ==
+* Create pgsql database and change settings in db.inc.php. Run the
+  following command sequence as root, replacing /var/www with your 
+  desired installation path:
+  
+  # su - postgres
+  $ sh /var/www/includes/scripts/create_db.sh dbname dbuser dbpass
+
+* Import schema from schema.pgsql
+    
+  $ sh /var/www/includes/scripts/create_schema.sh dbname
+
+* Create root user with your required password.
+  To generate the password, run sha256(username + password + salt)
+  where salt is defined in salt.inc.php. By default, this is blank,
+  but you really should set this before doing anything with your site.
+  
+  $ sh /var/www/includes/scripts/create_root_user.sh dbname username password
+        
+* Create home/top parent page:
+
+  $ sh /var/www/includes/scripts/create_home_page.sh dbname
+    
+INSERT INTO posts (id, title, slug, text, created_on, updated_on, page, parent_id, display_in_nav) 
+    
+== Store Module ==
+* The store module is not available in public format at this time. 
+  Essentially, it's a chintzy e-commerce system that lets you operate
+  an online store. There are a whole bunch of modules that will be
+  published at some point in the future.
+  
+* For the store module, allow 'authenticated user' permissions to view cart, checkout, etc...
+    
+        == anonymous user ==
+        * view store
+    
+        == authenticated user ==
+        * view store
+        * view cart
+        * checkout cart

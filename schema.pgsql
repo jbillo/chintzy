@@ -696,6 +696,10 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
+
+-- New constraint additions
+CREATE UNIQUE INDEX "uk_user_permissions_role_permission" ON "public"."role_permissions" USING BTREE ("role_id","permission_id")
+
 --
 -- PostgreSQL database dump complete
 --
