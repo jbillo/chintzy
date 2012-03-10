@@ -1,0 +1,70 @@
+# .htaccess generated 2010-11-15T00:40:27-05:00
+# Section: 0_base
+php_flag magic_quotes_gpc Off
+php_value allow_url_fopen 0
+php_value session.use_only_cookies 1
+php_value session.use_trans_sid 0
+php_value session.gc_maxlifetime 3600
+php_value session.cookie_httponly 1
+php_value session.cookie_secure 1
+php_value session.hash_function 1
+
+Options +FollowSymlinks -Indexes
+FileETag none
+
+<IfModule mod_expires.c>
+    ExpiresDefault "access plus 3 months"
+</IfModule>
+# End section: 0_base
+
+# Section: 1_sitemap
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /
+    RewriteRule ^sitemap.xml$ content/sitemap.xml [L]
+</IfModule>
+# End section: 1_sitemap
+
+# Section: 1_url_dateredir
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /
+    RewriteRule ^\d{4}/\d{2}/(.*)$ /$1 [R=301,L]
+    RewriteRule ^\d{4}/\d{2}/\d{2}/(.*)$ /$1 [R=301,L]
+</IfModule>
+# End section: 1_url_dateredir
+
+# Section: 1_url_wpcommentredir
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /
+    RewriteRule ^(.*)/comment-page-1/?$ /$1 [R=301,L]
+    RewriteRule ^(.*)/comment-page-(\d+)/?$ /$1?p=$2 [R=301,L]
+</IfModule>
+# End section: 1_url_wpcommentredir
+
+# Section: 2_ChintzyCMS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # RewriteCond block
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        # Remove trailing slash(es) from any URLs
+        RewriteRule ^(.+)/+$ $1 [L,R]
+    # End RewriteCond block for trailing slashes
+
+    # Redirection block
+        RewriteRule ^feed/?$ rss [L,R=301]
+    # End redirection block
+
+    # RewriteCond block - all other requests
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        # Redirect all other requests to the main index handler
+        RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
+    # End RewriteCond block
+</IfModule>
+# End section: 2_ChintzyCMS
+
