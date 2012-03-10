@@ -42,4 +42,9 @@ db.inc.php
 # Google authorization key
 google*.html
 
+# Specific directories not to commit out. They may contain cached files
+# or site-specific content.
+cache/*
+log/*
 private/*
+content/*
