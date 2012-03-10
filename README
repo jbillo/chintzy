@@ -1,0 +1,12 @@
+ChintzyCMS
+
+===
+
+Chintzy is a content management system focused on caching first and asking
+questions later. By default, it is intended to not touch your Postgres database
+at all; it will aggressively try to serve cached HTML content.
+
+This currently powers the EdgeLink Consulting (edgelinkconsulting.com) website
+as well as a few private installations. I'm still working on getting things
+ready for Github/public viewing, but figured it would be a good idea to
+have a central repo that won't change places when I nuke out a VM.
