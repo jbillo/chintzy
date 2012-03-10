@@ -41,3 +41,5 @@ db.inc.php
 
 # Google authorization key
 google*.html
+
+private/*
