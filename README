@@ -35,7 +35,7 @@ have a central repo that won't change places when I nuke out a VM.
 
   $ sh /var/www/includes/scripts/create_home_page.sh dbname
     
-INSERT INTO posts (id, title, slug, text, created_on, updated_on, page, parent_id, display_in_nav) 
+* Log into the administration panel with your root credentials at http://example.com/admin/ 
     
 == Store Module ==
 * The store module is not available in public format at this time. 
