@@ -24,7 +24,9 @@ $GLOBALS['ssl'] = ($protocol == 'https');
 if (file_exists("{$BASE}/db.inc.php")) {
     include_once "{$BASE}/db.inc.php";
 }
-include_once "./settings.inc.php";
+if (file_exists("$BASE/settings.inc.php")) {
+    include_once "$BASE/settings.inc.php";
+}
 
 /**
  * Permission constants (bitmask)
@@ -42,7 +44,13 @@ define('PERM_EXAMPLE',      2048);
 /**
  * Salt for account passwords
  */
-include_once './salt.inc.php';
+if (file_exists("$BASE/salt.inc.php")) {
+    include_once './salt.inc.php';
+} else {
+    $salt = '';
+}
+
+// Define the constant out and then remove the variable value
 define('SITE_SALT', $salt);
 $salt = '';
 
@@ -50,7 +58,7 @@ $salt = '';
  * Internal constants
  */
 define('SID', 'chintzy');
-define('MAX_CACHE_FILESIZE', 1024*1024*2); // 2M
+define('MAX_CACHE_FILESIZE', 1024*1024*2); // 2MB
 define('GENERATOR', "ChintzyCMS");
 
 /**

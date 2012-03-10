@@ -13,6 +13,18 @@ have a central repo that won't change places when I nuke out a VM.
 
 
 == Installation ==
+* Check that your webserver has mod_rewrite or something else similar enabled.
+  Without a proper .htaccess parser or a custom directives file, most URLs will
+  not work properly.
+  
+* You will need to ensure that your webserver also speaks HTTPS and that your
+  SERVER_NAME variable is set properly. You can probably tweak this to your liking
+  in config.inc.php, but don't overwrite the require_ssl parameters; this prevents
+  accidentally sending credentials over an unencrypted link. 
+  
+* Ensure that the root of the site has the "AllowOverride All" directive on so that
+  the mod_rewrite and .htaccess directives for this application work properly.
+
 * Create pgsql database and change settings in db.inc.php. Run the
   following command sequence as root, replacing /var/www with your 
   desired installation path:
