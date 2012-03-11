@@ -38,8 +38,14 @@
 |
 */
 
-$route['default_controller'] = "welcome";
-$route['404_override'] = '';
+$route['default_controller'] = "main";
+
+// Catch-all: point to main/catchall
+$route['(:any)/(:any)'] = "main/catchall/$1/$2";
+$route['(:any)'] = "main/catchall/$1";
+
+// 404: point to main/error_404
+$route['404_override'] = "main/error_404";
 
 
 /* End of file routes.php */
