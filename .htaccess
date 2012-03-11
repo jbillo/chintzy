@@ -63,7 +63,7 @@ FileETag none
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
         # Redirect all other requests to the main index handler
-        RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
+        RewriteRule ^(.*)$ /index.php/$1 [L]
     # End RewriteCond block
 </IfModule>
 # End section: 2_ChintzyCMS
