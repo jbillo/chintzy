@@ -15,7 +15,9 @@ class Chintzy_Controller extends CI_Controller {
         $page_num = $this->input->get("p");
         if (!$page_num or $page_num < 1 or !is_numeric($page_num)) {
             $page_num = 1;
-        }        
+        }
+        
+        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'dummy'));
     }
 
 }

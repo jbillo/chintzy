@@ -10,6 +10,11 @@ class Main extends Chintzy_Controller {
         echo "Index: ";
         print_r($params);
         
+        // If we have the cache, load that.
+        if ($this->pagecache->get($this->uri->uri_string()) {
+            return;
+        }
+        
         $this->load->model("Post_model");
         
         // Are we in single page mode or blog mode?
