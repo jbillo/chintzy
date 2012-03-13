@@ -7,28 +7,26 @@ class Main extends Chintzy_Controller {
     }
 
 	public function index($params = array()) {
-        echo "Index: ";
-        print_r($params);
+//         echo "Index: ";
+//         print_r($params);
+
+        $this->check_cache();
         
-        // If we have the cache, load that.
-        if ($this->pagecache->get($this->uri->uri_string()) {
-            return;
-        }
-        
+        // If the page wasn't found in the cache, generate it.
         $this->load->model("Post_model");
         
         // Are we in single page mode or blog mode?
         if ($this->site["single_page_mode"]) {
             // Retrieve the page with ID 1
-            echo "Single page!";
             $posts = $this->Post_model->get_page_by_id(1);
         } else {
             // Retrieve count of posts
-            echo "Blog mode!";
             $posts = $this->Post_model->get_last_posts($this->site["posts_per_page"]);
         }
         
+        $this->load->view("main/header");
         
+        $this->load->view("main/footer");
 	}
 	
 	public function catchall() {
@@ -44,6 +42,10 @@ class Main extends Chintzy_Controller {
 	public function error_404($params = array()) {
 	    echo "404: ";
 	    print_r($params);
+	    
+	    $this->check_cache();
+	    
+	    
 	}
 }
 

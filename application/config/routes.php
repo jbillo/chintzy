@@ -40,6 +40,9 @@
 
 $route['default_controller'] = "main";
 
+$route["admin/(:any)"] = "admin/$1";
+$route["admin"] = "admin";
+
 // Catch-all: point to main/catchall
 $route['(:any)/(:any)'] = "main/catchall/$1/$2";
 $route['(:any)'] = "main/catchall/$1";

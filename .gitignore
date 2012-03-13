@@ -35,16 +35,12 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
-# Security and config files
-settings.inc.php
-db.inc.php
-
 # Google authorization key
 google*.html
 
 # Specific directories not to commit out. They may contain cached files
 # or site-specific content.
-cache/*
-log/*
+application/cache/*.html
+application/logs/*
 private/*
 content/*
