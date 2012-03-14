@@ -6,12 +6,18 @@ class Chintzy_Controller extends CI_Controller {
     protected $site = array();
     protected $page_num = 1;
     protected $params = array();
+    
+    // Data variables to always be passed
+    protected $header = array();
+    protected $footer = array();
 
     public function __construct($controller_args = NULL) {
         parent::__construct();
         
         $this->params = $controller_args;
         $this->site = $this->config->item("site");
+        
+        $this->header["title"] = $this->site["site_title"];
         
         // Obtain current page number
         $page_num = $this->input->get("p");
@@ -20,17 +26,29 @@ class Chintzy_Controller extends CI_Controller {
         }
         
         $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'dummy'));
+
+        if (!$this->site["global_caching"]) {
+            $this->pagecache->enabled = FALSE;
+        }
     }
     
     public function __destruct() {
-        $this->pagecache->set($this->uri->uri_string(), $this->output->get_output());
+        if (!$this->pagecache->hit()) {
+            $this->pagecache->set($_SERVER['REQUEST_URI'], $this->output->get_output());
+        }        
     }
     
     public function check_cache() {
         // If we have the cache, load that.
-        if ($this->pagecache->get($this->uri->uri_string())) {
-            return;
-        }
-    }    
+        return ($this->pagecache->get($_SERVER['REQUEST_URI']));
+    }
+    
+    public function view_main_header() {
+        $this->load->view("main/header", $this->header);
+    }
+    
+    public function view_main_footer() {
+        $this->load->view("main/footer", $this->footer);
+    }
 
 }

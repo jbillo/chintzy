@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "main";
 
+$route["admin/clear_cache/(:num)"] = "admin/clear_cache/$1";
 $route["admin/(:any)"] = "admin/$1";
 $route["admin"] = "admin";
 

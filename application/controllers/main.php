@@ -10,23 +10,33 @@ class Main extends Chintzy_Controller {
 //         echo "Index: ";
 //         print_r($params);
 
-        $this->check_cache();
+        if ($this->check_cache()) {
+            return;
+        }
         
         // If the page wasn't found in the cache, generate it.
         $this->load->model("Post_model");
+        $posts = array();
         
         // Are we in single page mode or blog mode?
         if ($this->site["single_page_mode"]) {
             // Retrieve the page with ID 1
-            $posts = $this->Post_model->get_page_by_id(1);
+            $posts = array($this->Post_model->get_page_by_id(1));
+            $this->header["title"] = "{$posts[0]->title}{$this->site["title_separator"]}{$this->header["title"]}";
         } else {
             // Retrieve count of posts
             $posts = $this->Post_model->get_last_posts($this->site["posts_per_page"]);
         }
         
-        $this->load->view("main/header");
-        
-        $this->load->view("main/footer");
+        $this->view_main_header();
+        foreach ($posts as $post) {
+            $this->load->view("post", array("post" => $post));
+        }
+        if (count($posts) == 1) {
+            // Load comment details
+            // $this->load->view("comment/view", $post);
+        }
+        $this->view_main_footer();
 	}
 	
 	public function catchall() {
@@ -45,6 +55,8 @@ class Main extends Chintzy_Controller {
 	    
 	    $this->check_cache();
 	    
+	    $this->load->view("main/header");
+	    $this->load->view("main/footer");
 	    
 	}
 }

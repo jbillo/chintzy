@@ -18,7 +18,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+ // define('ENVIRONMENT', 'production');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -28,23 +28,23 @@
  * By default development will show errors but testing and live will hide them.
  */
 
-if (defined('ENVIRONMENT'))
-{
-	switch (ENVIRONMENT)
-	{
-		case 'development':
-			error_reporting(E_ALL);
-		break;
-	
-		case 'testing':
-		case 'production':
-			error_reporting(0);
-		break;
-
-		default:
-			exit('The application environment is not set correctly.');
-	}
-}
+// if (defined('ENVIRONMENT'))
+// {
+// 	switch (ENVIRONMENT)
+// 	{
+// 		case 'development':
+// 			error_reporting(E_ALL);
+// 		break;
+// 	
+// 		case 'testing':
+// 		case 'production':
+// 			error_reporting(0);
+// 		break;
+// 
+// 		default:
+// 			exit('The application environment is not set correctly.');
+// 	}
+// }
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application';
+	$application_folder = '/var/www/application';
 
 /*
  * --------------------------------------------------------------------
@@ -121,8 +121,13 @@ if (defined('ENVIRONMENT'))
  *
  */
 	// $assign_to_config['name_of_config_item'] = 'value of config item';
-
-
+	
+require_once ('./application/libraries/pagecache.php');
+$pagecache = &new Pagecache("{$application_folder}/");
+if ($result = $pagecache->get($_SERVER['REQUEST_URI'])) {
+    echo "{$result}<!-- s -->";
+    return;
+}
 
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
@@ -199,7 +204,17 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+ 
+
+// But wait, there's more before CI does its thing!
+
+// ChintzyCMS settings and values
+// This function effectively hijacks the CodeIgniter nonsense
+// out of the way and serves cached content if at all possible.
+
+
 require_once BASEPATH.'core/CodeIgniter.php';
+
 
 /* End of file index.php */
 /* Location: ./index.php */

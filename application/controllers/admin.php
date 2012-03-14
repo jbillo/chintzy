@@ -12,8 +12,12 @@ class Admin extends Chintzy_Controller {
         
     }
     
-    public function clear_cache() {
-        return $this->pagecache->clear();
+    public function clear_cache($tier = NULL) {
+        $this->load->helper("url");
+        $this->pagecache->clear($tier);
+        $this->view_main_header();
+        $this->load->view("admin/clear_cache");
+        $this->view_main_footer();
     }
 
 }
