@@ -59,10 +59,11 @@ class Main extends Chintzy_Controller {
 	}
 	
 	private function single_post($post) {
-	    $this->load->helper("url");
+	    $this->load->helper(array("url", "form"));
         $this->view_main_header();	
 	    $this->load->view("post", array("post" => $post));
-	    $this->load->view("comment/view", $post);
+	    $this->load->view("comment/new");
+	    // $this->load->view("comment/view", $post);
 	    $this->view_main_footer();
 	}
 	
