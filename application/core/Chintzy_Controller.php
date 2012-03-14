@@ -18,11 +18,12 @@ class Chintzy_Controller extends CI_Controller {
         $this->site = $this->config->item("site");
         
         $this->header["title"] = $this->site["site_title"];
+        $this->header["site_title"] = $this->site["site_title"];
         
         // Obtain current page number
-        $page_num = $this->input->get("p");
-        if (!$page_num or $page_num < 1 or !is_numeric($page_num)) {
-            $page_num = 1;
+        $this->page_num = $this->input->get("p");
+        if (!$this->page_num or $this->page_num < 1 or !is_numeric($this->page_num)) {
+            $this->page_num = 1;
         }
         
         $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'dummy'));

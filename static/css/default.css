@@ -1,0 +1,13 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 90%;
+}
+
+div.page_nav {
+    margin-top: 20px;
+}
+
+div.post {
+    margin-bottom: 20px;
+}
+
