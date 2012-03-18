@@ -71,4 +71,15 @@ $config["site"] = array(
         "public_key" => "6LdeFM8SAAAAAKKgNvqM7JzEBT1ZsvXS_azsY1bc",
         "private_key" => "6LdeFM8SAAAAAFcKZDRf_RvEgXO5-IAYDGJh_ow-",
     ),
+
+    /**
+    akismet
+    array
+    Settings for Akismet comment spam filtering
+    */
+    "akismet" => array(
+        "enabled" => TRUE,
+        "path" => APPPATH . "third_party/akismet/Akismet.class.php",
+        "api_key" => "",
+    ),
 );

@@ -1,4 +1,8 @@
+            <div class="grid_12" id="footer">
+                Powered by ChintzyCMS
+            </div>
 
+            <div class="clear"></div>
         </div> <!-- /container -->
     </body>
     <?php if ($scripts): ?>

@@ -21,6 +21,60 @@ div.right {
 
 iframe.comment_form {
     width: 100%;
-    height: 500px;
+    height: 540px;
     border: none;
+}
+
+#footer {
+    font-size: 75%;
+    margin-top: 20px;
+}
+
+/*
+Below definitions are adapted from EllisLab CI documentation
+http://codeigniter.com/user_guide/userguide.css
+*/
+
+.important {
+ background: #FBE6F2;
+ border: 1px solid #D893A1;
+ color: #333;
+ margin: 10px 0 5px 0;
+ padding: 10px;
+}
+
+div.important {
+    margin: 0;
+    padding: 4px;
+}
+
+.important p {
+ margin: 6px 0 8px 0;
+ padding: 0;
+}
+
+.important .leftpad {
+ margin: 6px 0 8px 0;
+ padding-left: 20px;
+}
+
+.critical {
+ background: #FBE6F2;
+ border: 1px solid #E68F8F;
+ color: #333;
+ margin: 10px 0 5px 0;
+ padding: 10px;
+}
+
+.critical p {
+ margin: 5px 0 6px 0;
+ padding: 0;
+}
+
+
+/* End EllisLab definitions */
+
+.error {
+    color: #530D0D;
+    font-weight: bold;
 }

@@ -24,6 +24,19 @@ class Post_model extends CI_Model {
         return $rows[0];
     }
 
+    public function get_post_slug($post_id) {
+        $sql = "SELECT p.slug FROM posts p WHERE p.id = ? LIMIT 1";
+        $params = array($post_id);
+
+        $query = $this->db->query($sql, $params);
+        $rows = $query->result();
+        if (count($rows) < 1) {
+            return NULL;
+        }
+
+        return $rows[0]->slug;
+    }
+
     public function get_by_slug($slug) {
         $fields = "p.id, p.title, p.slug, p.text, p.created_on, p.updated_on,
                     p.page, p.parent_id, p.display_in_nav";
