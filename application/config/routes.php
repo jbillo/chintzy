@@ -44,6 +44,10 @@ $route["admin/clear_cache/(:num)"] = "admin/clear_cache/$1";
 $route["admin/(:any)"] = "admin/$1";
 $route["admin"] = "admin";
 
+$route["comment/form/(:num)"] = "comment/form/$1";
+$route["comment/submit"] = "comment/submit";
+$route["comment"] = "comment";
+
 // Catch-all: point to main/catchall
 $route['(:any)'] = "main/catchall/$1";
 

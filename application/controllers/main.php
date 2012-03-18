@@ -9,11 +9,11 @@ class Main extends Chintzy_Controller {
         if ($this->check_cache()) {
             return;
         }
-        
+
         // If the page wasn't found in the cache, generate it.
         $this->load->model("Post_model");
         $posts = array();
-        
+
         // Are we in single page mode or blog mode?
         if ($this->site["single_page_mode"]) {
             // Retrieve the page with ID 1
@@ -23,7 +23,7 @@ class Main extends Chintzy_Controller {
             // Retrieve count of posts
             $total_posts = $this->Post_model->get_num_posts();
             $max_pages = ceil($total_posts / $this->site["posts_per_page"]);
-                        
+
             if ($this->page_num > $max_pages) {
                 return $this->error_404("page_number_too_high");
             }
@@ -32,16 +32,16 @@ class Main extends Chintzy_Controller {
                 $this->header["title"] = "Page {$this->page_num}{$this->site["title_separator"]}{$this->header["title"]}";
             }
         }
-        
+
         $this->load->helper("url");
-        
+
         if ($this->site["single_page_mode"]) {
             $this->single_post($posts[0]);
             return;
-        } 
-        
+        }
+
         $this->view_main_header();
-        
+
         foreach ($posts as $post) {
             $this->load->view("post", array("post" => $post));
         }
@@ -54,42 +54,57 @@ class Main extends Chintzy_Controller {
                 "next_page_num" => ($this->page_num + 1),
             ));
         }
-        
+
        $this->view_main_footer();
 	}
-	
+
 	private function single_post($post) {
 	    $this->load->helper(array("url", "form"));
-        $this->view_main_header();	
+        $this->view_main_header();
 	    $this->load->view("post", array("post" => $post));
-	    $this->load->view("comment/new");
-	    // $this->load->view("comment/view", $post);
+	    if ($post->comment_count > 0) {
+	        $this->load->view("comment/header");
+            $this->load->model("Comment_model");
+            $comments = $this->Comment_model->get_comments_on($post->id);
+            foreach ($comments as $comment) {
+                $this->load->view("comment/view", $comment);
+            }
+	    }
+
+//         $this->load->helper("recaptcha");
+// 	    $this->load->view("comment/new", array(
+// 	        "post_id" => $post->id,
+// 	        "recaptcha" => recaptcha_html(),
+// 	        )
+// 	    );
+
+        $this->load->view("comment/iframe", array("post_id" => $post->id));
 	    $this->view_main_footer();
 	}
-	
+
 	public function catchall() {
 	    $args = func_get_args();
-	    
+
 	    // Recompress out the arguments and see if there is a matching post.
 	    $test_slug = implode("/", $args);
 	    $this->load->model("Post_model");
-	    
+
 	    $post = $this->Post_model->get_by_slug($test_slug);
 	    if (!$post) {
             return $this->error_404("post_not_found");
 	    } else {
 	        // Display the post
 	        $this->single_post($post);
-	        return;    
+	        return;
 	    }
 	}
-	
+
 	public function error_404($params = array()) {
 	    echo "404: ";
 	    print_r($params);
-	    
+
 	    $this->check_cache();
-	    
+
 	    $this->view_main_header();
         $this->view_main_footer();
 	}

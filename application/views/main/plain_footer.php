@@ -1,5 +1,3 @@
-
-        </div> <!-- /container -->
     </body>
     <?php if ($scripts): ?>
         <?php foreach ($scripts as $script): ?>

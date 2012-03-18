@@ -26,7 +26,7 @@ ALTER TYPE public.comment_status OWNER TO chintzy;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: comments; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE comments (
@@ -64,7 +64,7 @@ ALTER TABLE public.comments_id_seq OWNER TO chintzy;
 ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 --
--- Name: permissions; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: permissions; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE permissions (
@@ -96,7 +96,7 @@ ALTER SEQUENCE permissions_id_seq OWNED BY permissions.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: posts; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE posts (
@@ -134,7 +134,7 @@ ALTER TABLE public.post_id_seq OWNER TO chintzy;
 ALTER SEQUENCE post_id_seq OWNED BY posts.id;
 
 --
--- Name: role_permissions; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: role_permissions; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE role_permissions (
@@ -147,7 +147,7 @@ CREATE TABLE role_permissions (
 ALTER TABLE public.role_permissions OWNER TO chintzy;
 
 --
--- Name: roles; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: roles; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE roles (
@@ -179,7 +179,7 @@ ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
--- Name: sitelog; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: sitelog; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE sitelog (
@@ -214,7 +214,7 @@ ALTER TABLE public.sitelog_id_seq OWNER TO chintzy;
 ALTER SEQUENCE sitelog_id_seq OWNED BY sitelog.id;
 
 --
--- Name: user_cookies; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: user_cookies; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE user_cookies (
@@ -269,7 +269,7 @@ ALTER SEQUENCE user_permissions_id_seq OWNED BY role_permissions.id;
 
 
 --
--- Name: user_recovery; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: user_recovery; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE user_recovery (
@@ -304,7 +304,7 @@ ALTER SEQUENCE user_recovery_id_seq OWNED BY user_recovery.id;
 
 
 --
--- Name: user_roles; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE user_roles (
@@ -337,7 +337,7 @@ ALTER SEQUENCE user_roles_id_seq OWNED BY user_roles.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE TABLE users (
@@ -439,7 +439,7 @@ ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Name: pk_comment_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_comment_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY comments
@@ -447,7 +447,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: pk_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY posts
@@ -455,7 +455,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: pk_permissions_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_permissions_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY permissions
@@ -463,7 +463,7 @@ ALTER TABLE ONLY permissions
 
 
 --
--- Name: pk_role_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_role_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY roles
@@ -471,14 +471,14 @@ ALTER TABLE ONLY roles
 
 
 --
--- Name: pk_sitelog_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_sitelog_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY sitelog
     ADD CONSTRAINT pk_sitelog_id PRIMARY KEY (id);
 
 --
--- Name: pk_user_cookies_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_user_cookies_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_cookies
@@ -486,7 +486,7 @@ ALTER TABLE ONLY user_cookies
 
 
 --
--- Name: pk_user_permissions_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_user_permissions_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY role_permissions
@@ -494,7 +494,7 @@ ALTER TABLE ONLY role_permissions
 
 
 --
--- Name: pk_user_recovery_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_user_recovery_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_recovery
@@ -502,7 +502,7 @@ ALTER TABLE ONLY user_recovery
 
 
 --
--- Name: pk_user_roles_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_user_roles_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_roles
@@ -510,21 +510,21 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: pk_users_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: pk_users_id; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT pk_users_id PRIMARY KEY (id);
 
 --
--- Name: uk_slug; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: uk_slug; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY posts
     ADD CONSTRAINT uk_slug UNIQUE (slug);
 
 --
--- Name: uk_user_cookies_userid; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: uk_user_cookies_userid; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_cookies
@@ -532,7 +532,7 @@ ALTER TABLE ONLY user_cookies
 
 
 --
--- Name: uk_user_recovery_userid; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: uk_user_recovery_userid; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_recovery
@@ -540,7 +540,7 @@ ALTER TABLE ONLY user_recovery
 
 
 --
--- Name: uk_users_email; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: uk_users_email; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -548,7 +548,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: unique_permissions_name; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: unique_permissions_name; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY permissions
@@ -556,7 +556,7 @@ ALTER TABLE ONLY permissions
 
 
 --
--- Name: unique_role_name; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: unique_role_name; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY roles
@@ -564,7 +564,7 @@ ALTER TABLE ONLY roles
 
 
 --
--- Name: unique_user_roles; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: unique_user_roles; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
 --
 
 ALTER TABLE ONLY user_roles
@@ -572,62 +572,62 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: fki_comment_post_id; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: fki_comment_post_id; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX fki_comment_post_id ON comments USING btree (post_id);
 
 --
--- Name: fki_user_cookies_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: fki_user_cookies_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX fki_user_cookies_userid ON user_cookies USING btree (user_id);
 
 
 --
--- Name: fki_user_recovery_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: fki_user_recovery_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE UNIQUE INDEX fki_user_recovery_userid ON user_recovery USING btree (user_id);
 
 
 --
--- Name: fki_user_roles_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: fki_user_roles_userid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX fki_user_roles_userid ON user_roles USING btree (user_id);
 
 
 --
--- Name: index_comment_post_id; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: index_comment_post_id; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX index_comment_post_id ON comments USING btree (post_id);
 
 
 --
--- Name: index_role_permissions_permissionid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: index_role_permissions_permissionid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX index_role_permissions_permissionid ON role_permissions USING btree (permission_id);
 
 
 --
--- Name: index_role_permissions_roleid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: index_role_permissions_roleid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX index_role_permissions_roleid ON role_permissions USING btree (role_id);
 
 
 --
--- Name: index_sitelog_type; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: index_sitelog_type; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX index_sitelog_type ON sitelog USING btree (type);
 
 
 --
--- Name: index_user_roles_roleid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace: 
+-- Name: index_user_roles_roleid; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
 --
 
 CREATE INDEX index_user_roles_roleid ON user_roles USING btree (role_id);
@@ -684,6 +684,36 @@ ALTER TABLE ONLY user_roles
 
 ALTER TABLE ONLY user_recovery
     ADD CONSTRAINT user_recovery_userid FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: sessions; Type: TABLE; Schema: public; Owner: chintzy; Tablespace:
+--
+
+CREATE TABLE sessions (
+    session_id character varying(40) DEFAULT 0 NOT NULL,
+    ip_address character varying(16) NOT NULL,
+    user_agent character varying(120) NOT NULL,
+    last_activity integer DEFAULT 0 NOT NULL,
+    user_data text NOT NULL
+);
+
+
+ALTER TABLE public.sessions OWNER TO chintzy;
+
+--
+-- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: chintzy; Tablespace:
+--
+
+ALTER TABLE ONLY sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (session_id);
+
+
+--
+-- Name: idx_last_activity; Type: INDEX; Schema: public; Owner: chintzy; Tablespace:
+--
+
+CREATE INDEX idx_last_activity ON sessions USING btree (last_activity);
 
 
 --
